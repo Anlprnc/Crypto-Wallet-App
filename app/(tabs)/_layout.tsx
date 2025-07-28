@@ -19,10 +19,14 @@ export default function TabLayout() {
             position: 'absolute',
             backgroundColor: '#000000',
             borderTopWidth: 0,
+            height: 100,
+            paddingTop: 20,
           },
           default: {
             backgroundColor: '#000000',
             borderTopWidth: 0,
+            height: 100,
+            paddingTop: 20,
           },
         }),
       }}
@@ -30,31 +34,31 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          tabBarIcon: ({ color, focused }) => <IconSymbol size={28} name={focused ? 'house.fill' : 'house'} color={color} />,
+          tabBarIcon: ({ color, focused }) => <IconSymbol size={32} name={focused ? 'house.fill' : 'house'} color={color} />,
         }}
       />
       <Tabs.Screen
         name="wallet"
         options={{
-          tabBarIcon: ({ color, focused }) => <IconSymbol size={28} name={focused ? 'wallet.bifold.fill' : 'wallet.bifold'} color={color} />,
+          tabBarIcon: ({ color, focused }) => <IconSymbol size={32} name={focused ? 'wallet.bifold.fill' : 'wallet.bifold'} color={color} />,
         }}
       />
       <Tabs.Screen
         name="transfer"
         options={{
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="arrow.left.arrow.right" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={32} name="arrow.left.arrow.right" color={color} />,
         }}
       />
       <Tabs.Screen
         name="market"
         options={{
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="chevron.right" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={32} name="chevron.right" color={color} />,
         }}
       />
       <Tabs.Screen
         name="send"
         options={{
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={32} name="paperplane.fill" color={color} />,
         }}
       />
     </Tabs>

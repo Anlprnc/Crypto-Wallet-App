@@ -27,7 +27,7 @@ export default function SendScreen() {
   ];
 
   return (
-    <View className="flex-1 bg-gradient-to-b from-slate-900 to-blue-900 pt-16">
+    <View className="flex-1 bg-gradient-to-b bg-black from-slate-900 to-blue-900 pt-16">
       <StatusBar barStyle="light-content" />
 
       {/* Header */}

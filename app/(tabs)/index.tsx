@@ -1,4 +1,6 @@
-import React from 'react';
+import { Charts } from '@/components/Charts';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import React, { useState } from 'react';
 import { ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
@@ -23,104 +25,104 @@ export default function HomeScreen() {
     },
   ];
 
+  const [activeButton, setActiveButton] = useState<string | null>(null);
+
   return (
     <View className="flex-1 bg-gradient-to-b bg-black from-slate-900 to-blue-900">
       <StatusBar barStyle="light-content" />
 
       <ScrollView className="flex-1 pt-16">
-        {/* Header */}
-        <View className="flex-row items-center justify-between px-5 mb-8">
+        <View className="flex items-center w-30 justify-center px-4 mb-8 bg-gray-300/25 rounded-3xl mx-auto p-1">
           <View className="flex-row items-center">
             <View className="w-8 h-8 rounded-full bg-orange-500 items-center justify-center mr-3">
               <Text className="text-white text-xs font-bold">₿</Text>
             </View>
-            <Text className="text-gray-400 text-sm">0xA1z...vNp451xe ▼</Text>
+            <View className="flex-row items-center gap-2">
+              <Text className="text-white text-sm">0xA1z...vNp451xe</Text>
+              <IconSymbol name="chevron.down" size={15} color="white" />
+            </View>
           </View>
         </View>
 
-        {/* Balance Card */}
         <View className="items-center mb-8">
-          <Text className="text-gray-400 text-sm mb-2">Current Wallet Balance</Text>
-          <Text className="text-white text-5xl font-light mb-1">$23,976.00</Text>
+          <Text className="text-white text-md mb-4">Current Wallet Balance</Text>
+          <Text className="text-white text-6xl font-semibold mb-1">$23,976.00</Text>
           <Text className="text-green-400 text-base">+14.32%</Text>
         </View>
 
-        {/* Action Buttons */}
-        <View className="flex-row justify-center gap-6 mb-8 px-5">
-          <TouchableOpacity className="items-center">
-            <View className="w-12 h-12 rounded-full bg-blue-500 items-center justify-center mb-2">
-              <Text className="text-white text-xl">+</Text>
+        <View className="flex-row justify-center gap-10 mb-8">
+          <TouchableOpacity className="items-center" onPress={() => setActiveButton(activeButton === 'add' ? null : 'add')}>
+            <View className={`w-20 h-20 rounded-full ${activeButton === 'add' ? 'bg-blue-500' : 'bg-white/10'} items-center justify-center mb-2`}>
+              <Text className="text-white text-4xl">+</Text>
             </View>
-            <Text className="text-white text-xs">Add</Text>
+            <Text className="text-white text-md">Add</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="items-center">
-            <View className="w-12 h-12 rounded-full bg-white/10 items-center justify-center mb-2">
-              <Text className="text-white text-xl">↗</Text>
+          <TouchableOpacity className="items-center" onPress={() => setActiveButton(activeButton === 'send' ? null : 'send')}>
+            <View className={`w-20 h-20 rounded-full ${activeButton === 'send' ? 'bg-blue-500' : 'bg-white/10'} items-center justify-center mb-2`}>
+              <Text className="text-white text-4xl">↗</Text>
             </View>
-            <Text className="text-white text-xs">Send</Text>
+            <Text className="text-white text-md">Send</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="items-center">
-            <View className="w-12 h-12 rounded-full bg-white/10 items-center justify-center mb-2">
-              <Text className="text-white text-xl">↓</Text>
+          <TouchableOpacity className="items-center" onPress={() => setActiveButton(activeButton === 'request' ? null : 'request')}>
+            <View className={`w-20 h-20 rounded-full ${activeButton === 'request' ? 'bg-blue-500' : 'bg-white/10'} items-center justify-center mb-2`}>
+              <Text className="text-white text-4xl">↓</Text>
             </View>
-            <Text className="text-white text-xs">Request</Text>
+            <Text className="text-white text-md">Request</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="items-center">
-            <View className="w-12 h-12 rounded-full bg-white/10 items-center justify-center mb-2">
-              <Text className="text-white text-xl">📋</Text>
+          <TouchableOpacity className="items-center" onPress={() => setActiveButton(activeButton === 'bill' ? null : 'bill')}>
+            <View className={`w-20 h-20 rounded-full ${activeButton === 'bill' ? 'bg-blue-500' : 'bg-white/10'} items-center justify-center mb-2`}>
+              <IconSymbol name="arrow.down.to.line" size={32} color="white" />
             </View>
-            <Text className="text-white text-xs">Bill</Text>
+            <Text className="text-white text-md">Bill</Text>
           </TouchableOpacity>
         </View>
 
-        {/* Portfolio Section */}
         <View className="px-5">
-          {/* Bitcoin Card */}
-          <View className="bg-white/5 rounded-3xl p-5 mb-4 backdrop-blur-lg">
+          <View className="bg-blue-600/20 overflow-hidden rounded-3xl p-5 mb-4 backdrop-blur-lg">
             <View className="flex-row items-center justify-between mb-4">
               <View className="flex-row items-center">
-                <View className="w-10 h-10 rounded-full bg-orange-500 items-center justify-center mr-3">
-                  <Text className="text-white text-sm font-bold">₿</Text>
+                <View className="w-16 h-16 rounded-full bg-orange-500 items-center justify-center mr-3">
+                  <Text className="text-white text-xl font-bold">₿</Text>
                 </View>
                 <View>
-                  <Text className="text-white text-base font-semibold">BTC</Text>
-                  <Text className="text-gray-400 text-sm">Bitcoin</Text>
+                  <Text className="text-white text-lg font-semibold">BTC</Text>
+                  <Text className="text-gray-400 text-md">Bitcoin</Text>
                 </View>
               </View>
               <View className="items-end">
-                <Text className="text-white text-lg font-semibold">$23,976.00</Text>
-                <Text className="text-green-400 text-sm">+14.32</Text>
+                <Text className="text-white text-xl font-semibold">$23,976.00</Text>
+                <Text className="text-green-400 text-lg">+14.32</Text>
               </View>
             </View>
-
-            {/* Mini Chart Placeholder */}
-            <View className="h-16 bg-white/5 rounded-lg items-center justify-center">
-              <Text className="text-green-400 text-xs">📈 Mini Chart</Text>
+            <View className="-ml-14 rounded-lg -mb-5">
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} aria-hidden={true} className="mr-2">
+                <Charts width={500} height={100} />
+              </ScrollView>
             </View>
           </View>
 
-          {/* Other Crypto Assets */}
           {cryptoData.map((crypto, index) => (
             <View key={index} className="flex-row items-center justify-between py-4 border-b border-white/5">
-              <View className="flex-row items-center">
-                <View className={`w-10 h-10 rounded-full ${crypto.color} items-center justify-center mr-3`}>
-                  <Text className="text-white text-sm font-bold">{crypto.symbol.charAt(0)}</Text>
+              <View className="flex-row items-center w-32">
+                <View className={`w-16 h-16 rounded-full ${crypto.color} items-center justify-center mr-3`}>
+                  <Text className="text-white text-xl font-bold">{crypto.symbol.charAt(0)}</Text>
                 </View>
                 <View>
-                  <Text className="text-white text-base font-medium">{crypto.symbol}</Text>
-                  <Text className="text-gray-400 text-sm">{crypto.name}</Text>
+                  <Text className="text-white text-xl font-medium">{crypto.symbol}</Text>
+                  <Text className="text-gray-400 text-lg">{crypto.name}</Text>
                 </View>
               </View>
 
-              <View className="flex-row items-center">
-                <Text className={`text-xs mr-3 ${crypto.chartColor}`}>📊</Text>
-                <View className="items-end">
-                  <Text className="text-white text-sm">{crypto.amount}</Text>
-                  <Text className="text-gray-400 text-xs">{crypto.value}</Text>
-                </View>
+              <View className="w-32 h-16 -ml-12 items-center justify-center">
+                <Charts width={150} height={50} />
+              </View>
+
+              <View className="w-32 items-end">
+                <Text className="text-white text-xl">{crypto.amount}</Text>
+                <Text className="text-gray-400 text-lg">{crypto.value}</Text>
               </View>
             </View>
           ))}
